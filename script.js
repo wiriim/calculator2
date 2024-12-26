@@ -180,7 +180,7 @@ function exec(target){
     console.log("-------------");
 }
 
-window.addEventListener("keyup", e => keyExec(e.key));
+window.addEventListener("keydown", e => keyExec(e.key));
 
 function keyExec(key){
     buttons.forEach(button => {
