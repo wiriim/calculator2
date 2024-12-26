@@ -1,14 +1,14 @@
 function add(a, b){
-    return a + b;
+    return +(a + b).toFixed(9);
 }
 function subtract(a, b){
-    return a - b;
+    return +(a - b).toFixed(9);
 }
 function multiply(a, b){
-    return a * b;
+    return +(a * b).toFixed(9);
 }
 function divide(a, b){
-    return a / b;
+    return +(a / b).toFixed(9);
 }
 function updateDisplay(display){
     if (display[0] === "0" && String(display).length > 1 && display[1] !== ".")
@@ -88,23 +88,26 @@ buttons.forEach(button => {
 function exec(target){
     const isNumber = /\d/.test(target.textContent);
     const content = target.textContent;
-
+    
     if (isNumber)
     {
         resetDisplay === true ? display = 0 : display;
+        content === "0" && String(display).length === 1 ? 
+        display = content : display += content;
+
+        if (display.length > 20){
+            return;
+        }
+        
         if (firstTimeInput)
         {
-            content === "0" && String(display).length === 1 ? 
-            display = content : display += content;
             num1 = +display;
-            updateDisplay(display);
         }
         else if (!firstTimeInput)
         {
-            display += content;
             num2 = +display;
-            updateDisplay(display);
         }
+        updateDisplay(display);
         resetDisplay = false;
     }
     else if (!isNumber)
