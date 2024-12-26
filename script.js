@@ -89,6 +89,7 @@ buttons.forEach(button => {
 });
 
 function exec(target){
+    highlight(target);
     const isNumber = /\d/.test(target.textContent);
     const content = target.textContent;
     
@@ -179,3 +180,28 @@ function exec(target){
     console.log("-------------");
 }
 
+window.addEventListener("keyup", e => keyExec(e.key));
+
+function keyExec(key){
+    buttons.forEach(button => {
+        if (button.textContent === key || button.id === key){
+            console.log(button.id)
+            exec(button);
+        }
+    });
+};
+
+function highlight(button){
+    buttons.forEach(button => {
+        const style = window.getComputedStyle(button);
+        const rgbValue = style.getPropertyValue("background-color");
+        const rgbString = rgbValue.match(/\d+/g);
+        button.style.backgroundColor = 
+        `rgba(${rgbString[0]}, ${rgbString[1]}, ${rgbString[2]}, 1)`;
+    });
+    const style = window.getComputedStyle(button);
+    const rgbValue = style.getPropertyValue("background-color");
+    const rgbString = rgbValue.match(/\d+/g);
+    button.style.backgroundColor = 
+    `rgba(${rgbString[0]}, ${rgbString[1]}, ${rgbString[2]}, 0.5)`;
+}
