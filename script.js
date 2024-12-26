@@ -50,6 +50,7 @@ function reset(){
     display = 0;
     firstTimeInput = true;
     resetDisplay = false;
+    commaIsNotClicked = true;
 }
 
 let num1 = null;
@@ -58,6 +59,7 @@ let operator = null;
 let display = 0;
 let firstTimeInput = true;
 let resetDisplay = false;
+let commaIsNotClicked = true;
 
 const displayContainer = document.querySelector(".display");
 displayContainer.textContent = display;
@@ -90,14 +92,22 @@ function exec(target){
     }
     else if (!isNumber)
     {
-        num1 === null ? firstTimeInput = true : firstTimeInput = false;
-        resetDisplay = true;
+        
         //special operator
         if (content === "AC")
         {
             operate(num1, num2, content);
         }
-
+        else if (content === ".")
+        {
+            commaIsNotClicked === true ? display += "." : display;
+            updateDisplay(display);
+            resetDisplay = false;
+            return;
+        }
+        
+        num1 === null ? firstTimeInput = true : firstTimeInput = false;
+        resetDisplay = true;
 
         //basic operator
         if (num2 === null)
@@ -117,6 +127,6 @@ function exec(target){
     console.log("num1: " + num1);
     console.log("num2: " + num2);
     console.log("operator: " + operator);
-    console.log("-------------")
+    console.log("-------------");
 }
 
