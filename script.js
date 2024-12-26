@@ -38,6 +38,10 @@ function operate(a, b, op){
         reset();
         return 0;
     }
+    else if (op === "placeholder"){
+        if (num2 === null) return num1;
+        else return num2;
+    }
 }
 function reset(){
     num1 = null;
@@ -99,18 +103,20 @@ function exec(target){
         if (num2 === null)
         {
             operator = content;
+            content === "=" ? operator = "placeholder" : operator = operator;
         }
         else if (num2 !== null)
         {
             display = updateDisplay(operate(num1, num2, operator));
             num1 = +display;
             num2 = null;
-            operator = content;
+            content === "=" ? operator = "placeholder" : operator = content;
         }
     }
 
-    // console.log("num1: " + num1);
-    // console.log("num2: " + num2);
-    // console.log("-------------")
+    console.log("num1: " + num1);
+    console.log("num2: " + num2);
+    console.log("operator: " + operator);
+    console.log("-------------")
 }
 
