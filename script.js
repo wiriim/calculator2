@@ -5,7 +5,7 @@ function subtract(a, b){
     return +(a - b).toFixed(9);
 }
 function multiply(a, b){
-    return +(a * b).toFixed(1);
+    return +(a * b).toFixed(9);
 }
 function divide(a, b){
     if (b === 0){
