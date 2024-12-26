@@ -8,6 +8,11 @@ function multiply(a, b){
     return +(a * b).toFixed(1);
 }
 function divide(a, b){
+    if (b === 0){
+        operate(a, b, "AC");
+        displayContainer.textContent = "No division by 0";
+        return;
+    }
     return +(a / b).toFixed(9);
 }
 function updateDisplay(display){
