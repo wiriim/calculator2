@@ -20,6 +20,12 @@ function updateDisplay(display){
         displayContainer.textContent = String(display).slice(1);
     else
         displayContainer.textContent = display;
+
+    if (String(display).length > 15){
+        displayContainer.style.display = "block";
+    }else{
+        displayContainer.style.display = "flex";
+    }
     return display;
 }
 
@@ -102,7 +108,7 @@ function exec(target){
         if (display.length > 15){
             return;
         }
-        
+
         if (firstTimeInput)
         {
             num1 = +display;

@@ -43,11 +43,13 @@
 }
 
 .display{
+    max-width: 380px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     min-height: 80px;
     font-size: 40px;
     padding: 20px;
 
-    overflow-wrap: anywhere;
     justify-content: end;
     align-items: end;
     flex: 1 1 400px;
