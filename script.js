@@ -11,9 +11,13 @@ function divide(a, b){
     return a / b;
 }
 function updateDisplay(display){
-    displayContainer.textContent = +display;
+    if (display[0] === "0" && String(display).length > 1 && display[1] !== ".")
+        displayContainer.textContent = String(display).slice(1);
+    else
+        displayContainer.textContent = display;
     return display;
 }
+
 function operate(a, b, op){
     if (op === "/"){
         return divide(a, b);
@@ -44,6 +48,15 @@ function operate(a, b, op){
     }
     else if (op === "+/-"){
         return +display * -1;
+    }
+    else if (op === "B"){
+
+        if (String(display).length === 1)
+            return 0;
+        else{
+            return +(String(display).slice(0, String(display).length-1));
+        }
+            
     }
 }
 function reset(){
@@ -81,7 +94,8 @@ function exec(target){
         resetDisplay === true ? display = 0 : display;
         if (firstTimeInput)
         {
-            display += content;
+            content === "0" && String(display).length === 1 ? 
+            display = content : display += content;
             num1 = +display;
             updateDisplay(display);
         }
@@ -103,21 +117,39 @@ function exec(target){
         }
         else if (content === ".")
         {
-            if (commaIsNotClicked === true) {
+            if (commaIsNotClicked === true && resetDisplay === false) {
+                commaIsNotClicked = false;
                 display += "." 
                 updateDisplay(display);
                 resetDisplay = false;
-                commaIsNotClicked = false;
                 return;
             }
-            else if (!commaIsNotClicked){
+            else if (commaIsNotClicked === true && resetDisplay === true){
+                commaIsNotClicked = false;
+                display = "0.";
+                updateDisplay(display);
+                resetDisplay = false;
+                return
+            }
+            else{
                 return;
             }
         }
         else if (content === "+/-"){
             display = operate(num1, num2, content);
             updateDisplay(display);
-            num2 === numm ? num1 = display : num2 = display;
+            num2 === null ? num1 = display : num2 = display;
+            return;
+        }
+        else if (content === "B"){
+            display = operate(num1, num2, content);
+            updateDisplay(display);
+            if (num2 === null){
+                display === 0 ? num1 = null : num1 = display;
+            }
+            else {
+                display === 0 ? num2 = null : num2 = display;
+            }
             return;
         }
         
