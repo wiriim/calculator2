@@ -5,7 +5,7 @@ function subtract(a, b){
     return +(a - b).toFixed(9);
 }
 function multiply(a, b){
-    return +(a * b).toFixed(9);
+    return +(a * b).toFixed(1);
 }
 function divide(a, b){
     return +(a / b).toFixed(9);
@@ -95,7 +95,7 @@ function exec(target){
         content === "0" && String(display).length === 1 ? 
         display = content : display += content;
 
-        if (display.length > 20){
+        if (display.length > 13){
             return;
         }
         

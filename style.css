@@ -5,22 +5,28 @@
 }
 
 .container{
+    font-family: "Rubik", serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
     width: 400px;
-    height: 500px;
-    background-color: aqua;
+    height: 600px;
+    background-color: #01A7C2;
     font-size: 1.5rem;
     padding: 10px;
     border-radius: 10px;
     margin: 20px;
-    border: 2px solid black;
 
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
 
 .container > *{
-    border-radius: 10px;
+    color: black;
+    border-radius: 20px;
 
     display: flex;
     justify-content: center;
@@ -28,15 +34,17 @@
 }
 
 .button{
-    border: 1px solid black;
     cursor: pointer;
+    height: 80px;
+    max-width: 80px;
 
     flex: 1 1 80px;
-    background-color: bisque;
+    background-color: #10FFCB;
 }
 
 .display{
-    font-size: 2rem;
+    height: 80px;
+    font-size: 30px;
     padding-right: 20px;
 
     justify-content: end;
@@ -44,5 +52,21 @@
 }
 
 .zero{
+    max-width: 170px;
+
     flex: 1 1 176px;
+}
+
+.clear,
+.negative,
+.divide{
+    background-color: #A3BAC3;
+}
+
+.backspace,
+.multiply,
+.minus,
+.add,
+.equal{
+    background-color: #006989;
 }
