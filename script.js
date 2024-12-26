@@ -42,6 +42,9 @@ function operate(a, b, op){
         if (num2 === null) return num1;
         else return num2;
     }
+    else if (op === "+/-"){
+        return +display * -1;
+    }
 }
 function reset(){
     num1 = null;
@@ -100,15 +103,27 @@ function exec(target){
         }
         else if (content === ".")
         {
-            commaIsNotClicked === true ? display += "." : display;
+            if (commaIsNotClicked === true) {
+                display += "." 
+                updateDisplay(display);
+                resetDisplay = false;
+                commaIsNotClicked = false;
+                return;
+            }
+            else if (!commaIsNotClicked){
+                return;
+            }
+        }
+        else if (content === "+/-"){
+            display = operate(num1, num2, content);
             updateDisplay(display);
-            resetDisplay = false;
+            num2 === numm ? num1 = display : num2 = display;
             return;
         }
         
         num1 === null ? firstTimeInput = true : firstTimeInput = false;
         resetDisplay = true;
-
+        commaIsNotClicked = true;
         //basic operator
         if (num2 === null)
         {
@@ -124,9 +139,7 @@ function exec(target){
         }
     }
 
-    console.log("num1: " + num1);
-    console.log("num2: " + num2);
-    console.log("operator: " + operator);
+    console.log(`${num1},${operator},${num2}`);
     console.log("-------------");
 }
 
