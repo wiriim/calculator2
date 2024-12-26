@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 400px;
+    height: 500px;
+    background-color: aqua;
+    font-size: 1.5rem;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px;
+    border: 2px solid black;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.container > *{
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button{
+    border: 1px solid black;
+    cursor: pointer;
+
+    flex: 1 1 80px;
+    background-color: bisque;
+}
+
+.display{
+    font-size: 2rem;
+    padding-right: 20px;
+
+    justify-content: end;
+    flex: 1 1 400px;
+}
+
+.zero{
+    flex: 1 1 176px;
+}
