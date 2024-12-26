@@ -95,7 +95,7 @@ function exec(target){
         content === "0" && String(display).length === 1 ? 
         display = content : display += content;
 
-        if (display.length > 13){
+        if (display.length > 15){
             return;
         }
         
